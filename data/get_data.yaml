@@ -1,0 +1,130 @@
+get_list_data:
+    - path: /api/users
+      params:
+        page: 1
+      expect_code: 200
+      expect_total: 12
+      case_name: get 1 ye
+      feature: GET模块
+      story: 获取用户列表
+
+
+get_users_data:
+    - path: /api/users/{id}
+      id: 1
+      expect_code: 200
+      case_name: Get the user with ID 1
+      feature: GET模块
+      story: 获取单个用户
+    - path: /api/users/{id}
+      id: 2
+      expect_code: 200
+      case_name: Get the user with ID 2
+      feature: GET模块
+      story: 获取单个用户
+    - path: /api/users/{id}
+      id: 3
+      expect_code: 200
+      case_name: Get the user with ID 3
+      feature: GET模块
+      story: 获取单个用户
+    - path: /api/users/{id}
+      id: 12
+      expect_code: 200
+      case_name: Get the user with ID 12
+      feature: GET模块
+      story: 获取单个用户
+    - path: /api/users/{id}
+      id: 23
+      expect_code: 404
+      case_name: Get the user with ID 23
+      feature: GET模块
+      story: 获取单个用户
+
+post_users_data:
+  - path: /api/users
+    data:
+      name: morpheus
+      job: leader
+    expect_code: 201
+    expect_name: morpheus
+    expect_job: leader
+    case_name: Create a user named morpheus
+    feature: POST模块
+    story: 创建用户
+  - path: /api/users
+    data:
+      name: morpheus
+      job: null
+    expect_code: 201
+    expect_name: morpheus
+    expect_job: null
+    case_name: Create a user named morpheus,but job is null
+    feature: POST模块
+    story: 创建用户
+  - path: /api/users
+    data:
+      name: null
+      job: leader
+    expect_code: 201
+    expect_name:
+    expect_job: leader
+    case_name: Create a user named is null
+    feature: POST模块
+    story: 创建用户
+
+
+put_users_data:
+  - path: /api/users/{id}
+    data:
+      name: morpheus
+      job: zion resident
+    expect_code: 200
+    expect_name: morpheus
+    expect_job: zion resident
+    id: 1
+    case_name: Update the user with ID 1
+    feature: PUT模块
+    story: 更新用户
+  - path: /api/users/{id}
+    data:
+      name: morpheus
+      job:
+    expect_code: 200
+    expect_name: morpheus
+    expect_job: zion resident
+    id: 1
+    case_name: Update the user with ID 1,but job is null
+    feature: PUT模块
+    story: 更新用户
+  - path: /api/users/{id}
+    data:
+      name:
+      job: zion resident
+    expect_code: 200
+    expect_name: morpheus
+    expect_job: zion resident
+    id: 1
+    case_name: Update the user with ID 1,but name is bull
+    feature: PUT模块
+    story: 更新用户
+
+delete_users_data:
+  - path: /api/users/{id}
+    id: 1
+    expect_code: 20
+    case_name: delete id=1 user
+    feature: DELETE模块
+    story: 删除用户
+  - path: /api/users/{id}
+    id: 2
+    expect_code: 200
+    case_name: delete id=2 user
+    feature: DELETE模块
+    story: 删除用户
+  - path: /api/users/{id}
+    id: 3
+    expect_code: 200
+    case_name: delete id=3 user
+    feature: DELETE模块
+    story: 删除用户

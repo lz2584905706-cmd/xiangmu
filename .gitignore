@@ -1,0 +1,19 @@
+# python虚拟环境
+venv/
+.venv/
+
+# pyc缓存
+__pycache__/
+*.pyc
+
+# 日志、报告
+logs/
+reports/
+*.log
+
+# 本地配置（如果里面有账号密码！）
+config/config.py
+
+# pycharm配置文件夹
+.idea/
+*.iml
