@@ -20,7 +20,7 @@ class ApiClient:
             url=self.base_url+path
             print(f"【实际请求完整URL】：{url}")
             self.logger.info(f"url:{url}")
-            resp=requests.get(url,headers=self.headers,timeout=self.timeout)
+            resp=requests.get(url,timeout=self.timeout)
             self.logger.info(f"状态码:{resp.status_code}")
         except Exception as e:
             self.logger.error(f"GET请求异常{e}")
@@ -32,7 +32,7 @@ class ApiClient:
             url=self.base_url+path
             print(f"【实际请求完整URL】：{url}")
             self.logger.info(f"url:{url}")
-            resp=requests.post(url,data=data,headers=self.headers,timeout=self.timeout,json=json)
+            resp=requests.post(url,data=data,timeout=self.timeout,json=json)
             self.logger.info(f"状态码:{resp.status_code}")
         except Exception as e:
             self.logger.error(f"POST请求异常{e}")
@@ -44,7 +44,7 @@ class ApiClient:
             url=self.base_url+path
             print(f"【实际请求完整URL】：{url}")
             self.logger.info(f"url:{url}")
-            resp=requests.put(url,data=data,headers=self.headers,timeout=self.timeout,json=json)
+            resp=requests.put(url,data=data,timeout=self.timeout,json=json)
         except Exception as e:
             self.logger.error(f"PUT请求异常{e}")
             raise e
@@ -54,7 +54,7 @@ class ApiClient:
         try:
             url=self.base_url+path
             self.logger.info(f"url:{url}")
-            resp=requests.put(url,headers=self.headers,timeout=self.timeout)
+            resp=requests.put(url,timeout=self.timeout)
         except Exception as e:
             self.logger.error(f"DELETE请求异常{e}")
             raise e
