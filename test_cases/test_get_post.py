@@ -41,7 +41,7 @@ def test_post_users(api_client,case):
     set_allure_info(case)
     resp=api_client.api_post(case.get("path"),json=case.get("data"))
     AssertUtil.assert_status_code(resp, case.get("expect_code"))
-    AssertUtil.assert_json_value(resp,"data.name", case.get("expect_name"))
+    AssertUtil.assert_json_value(resp,"name", case.get("expect_name"))
     AssertUtil.assert_json_value(resp, "job", case.get("expect_job"))
 
 @pytest.mark.regression

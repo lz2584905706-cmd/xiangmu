@@ -89,20 +89,20 @@ put_users_data:
   - path: /api/users/{id}
     data:
       name: morpheus
-      job:
+      job: null
     expect_code: 200
     expect_name: morpheus
-    expect_job: zion resident
+    expect_job: null
     id: 1
     case_name: Update the user with ID 1,but job is null
     feature: PUT模块
     story: 更新用户
   - path: /api/users/{id}
     data:
-      name:
+      name: null
       job: zion resident
     expect_code: 200
-    expect_name: morpheus
+    expect_name: null
     expect_job: zion resident
     id: 1
     case_name: Update the user with ID 1,but name is bull
