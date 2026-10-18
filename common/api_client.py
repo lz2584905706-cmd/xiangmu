@@ -11,9 +11,7 @@ class ApiClient:
         self.headers={
         "Content-Type": "application/json"
     }
-        token=store.get("token")
-        if token:
-            self.headers["Authorization"] = f"Bearer {token}"
+        self.store = store
 
     def api_get(self,path,params=None):
         try:
@@ -54,7 +52,7 @@ class ApiClient:
         try:
             url=self.base_url+path
             self.logger.info(f"url:{url}")
-            resp=requests.put(url,timeout=self.timeout)
+            resp=requests.delete(url,timeout=self.timeout)
         except Exception as e:
             self.logger.error(f"DELETE请求异常{e}")
             raise e

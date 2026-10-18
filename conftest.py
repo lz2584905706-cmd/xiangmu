@@ -25,7 +25,15 @@ def login_once(store):
     }
     resp = temp_client.api_post(login_url, json=login_payload)
     print("登录状态码", resp.status_code)
-    print("登录返回文本", repr(resp.text))  # repr可以看清是不是空字符串
-    json_data = resp.json()
-    store["token"] = json_data["token"]
-    print(f"\n=====登录成功，获取token=====\n{store['token']}")
+    # 容错：只有登录成功(200)且返回里真的有token才保存；
+    # 失败/限流时跳过，store["token"]保持None，不让整个会话崩溃
+    if resp.status_code == 200:
+        json_data = resp.json()
+        token = json_data.get("token")
+        if token:
+            store["token"] = token
+            print(f"\n=====登录成功，获取token=====\n{store['token']}")
+        else:
+            print("登录返回中没有token字段，跳过保存")
+    else:
+        print(f"登录未成功，状态码{resp.status_code}，跳过token保存（不影响无需鉴权的用例）")
