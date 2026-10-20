@@ -1,19 +1,24 @@
-# python虚拟环境
+# Python 虚拟环境
 venv/
 .venv/
 
-# pyc缓存
+# 字节码缓存
 __pycache__/
 *.pyc
 
-# 日志、报告
-logs/
+# pytest / allure 缓存与报告
+.pytest_cache/
+allure-results/
 reports/
+
+# 日志
+logs/
 *.log
 
-# 本地配置（如果里面有账号密码！）
-config/config.py
+# 敏感本地配置（含账号密码时才忽略；本项目config无密钥，故上传）
+.env
 
-# pycharm配置文件夹
+# IDE
 .idea/
+.vscode/
 *.iml
