@@ -27,7 +27,6 @@
 
 ## 四、目录结构
 ```
-xaingmu2/
 ├── common/                 # 公共封装模块
 │   ├── api_client.py       # HTTP 请求封装（GET/POST/PUT/DELETE），代理开关
 │   ├── assert_util.py      # 通用断言（状态码、JSON字段，含容错取响应体）
@@ -60,10 +59,21 @@ xaingmu2/
 
 ## 六、环境安装
 ```bash
-# 建议先创建虚拟环境
+# 1. 创建虚拟环境（Windows）
+python -m venv .venv
+
+# 2. 激活虚拟环境（Windows）
+.venv\Scripts\activate
+
+# 3. 安装依赖
 pip install -r requirements.txt
+
+# 4. 运行测试
+pytest
 ```
+> Mac/Linux 激活命令：`source .venv/bin/activate`
 > Allure 报告需额外安装 Allure 命令行（Java 环境），不装也可用 pytest 控制台结果。
+> 被测接口 ReqRes 为外部免费测试服务，偶尔限流（403/429）属正常现象，稍等重试即可，不影响框架本身。
 
 ## 七、运行方式
 ```bash
